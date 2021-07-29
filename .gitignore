@@ -188,3 +188,8 @@ cython_debug/
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,visualstudiocode
+
+# Custom
+
+crawls/
+结果文件/
