@@ -235,13 +235,15 @@ class SearchSpider(scrapy.Spider):
         new_meta = meta
         if not 'pagenum' in new_meta:
             new_meta['pagenum'] = 1
-        output = 'date={}'.format(meta['date'])
+        lines = []
+        if 'date' in meta:
+            lines.append(f"date={meta['date']}")
         if 'province_name' in meta:
-            output += ', province={}'.format(meta['province_name'])
+            lines.append(f"province={meta['province_name']}")
         if 'city_name' in meta:
-            output += ', city={}'.format(meta['city_name'])
-        output += ', page={}'.format(new_meta['pagenum'])
-        print(output)
+            lines.append(f"city={meta['city_name']}")
+        lines.append(f"page={new_meta['pagenum']}")
+        print(", ".join(lines))
 
         if is_empty:
             print('当前页面搜索结果为空')
